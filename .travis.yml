@@ -1,7 +1,4 @@
 sudo: required
-cache:
-  directories:
-    - $HOME/google-cloud-sdk
 services:
   - docker
 env:
@@ -9,10 +6,7 @@ env:
     - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 before_install:
   - openssl aes-256-cbc -K $encrypted_573274d1cd08_key -iv $encrypted_573274d1cd08_iv -in gke-experiment-sa.json.enc -out ../gke-experiment-sa.json -d
-  - if [ ! -d $HOME/google-cloud-sdk/bin ]; then
-      rm -rf $HOME/google-cloud-sdk;
-      curl https://sdk.cloud.google.com | bash > /dev/null;
-    fi
+  - curl https://sdk.cloud.google.com | bash > /dev/null
   - source $HOME/google-cloud-sdk/path.bash.inc
   - gcloud components update kubectl
   - gcloud auth activate-service-account --key-file service-account.json
