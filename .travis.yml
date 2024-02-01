@@ -16,7 +16,7 @@ before_install:
     fi
   - source $HOME/google-cloud-sdk/path.bash.inc
   - gcloud components update kubectl
-  - gcloud auth activate-service-account --key-file gke-experiment-sa.json
+  - gcloud auth activate-service-account --key-file ../gke-experiment-sa.json
   - gcloud config set project gke-experiement-412421
   - gcloud config set compute/zone us-west1-a
   - gcloud container clusters get-credentials multi-cluster
